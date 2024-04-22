@@ -5,16 +5,17 @@ jobs:
   test:
     docker:
       - image: circleci/ruby:2.4-node-browsers-legacy
+    environment
     steps:
-      # - queue/until_front_of_line:
-      #     # job-regex: ^DeployStep[0-9]$
-      #     # limit-branch-name: main
-      #     max-wait-time: '60'
-      #     my-pipeline: 337aeef1-1462-4635-81ce-03e5b641e85d
-      #     block-workflow: true
+      - queue/until_front_of_line:
+          # job-regex: ^DeployStep[0-9]$
+          # limit-branch-name: main
+          max-wait-time: '60'
+          my-pipeline: << pipeline.number >>
+          block-workflow: true
       - checkout
       - run: |
-          echo "pipeline.number: ${pipeline.number}"
+          echo "pipeline.number: << pipeline.number >>"
           env
           bundle install
           bundle exec jekyll build
