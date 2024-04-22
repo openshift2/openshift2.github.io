@@ -6,12 +6,12 @@ jobs:
     docker:
       - image: circleci/ruby:2.4-node-browsers-legacy
     steps:
-      - queue/until_front_of_line:
-          # job-regex: ^DeployStep[0-9]$
-          # limit-branch-name: main
-          max-wait-time: '60'
-          # my-pipeline: <<pipeline.number>>
-          block-workflow: true
+      # - queue/until_front_of_line:
+      #     # job-regex: ^DeployStep[0-9]$
+      #     # limit-branch-name: main
+      #     max-wait-time: '60'
+      #     my-pipeline: <<pipeline.number>>
+      #     block-workflow: true
       - checkout
       - run: |
           env
