@@ -5,7 +5,6 @@ jobs:
   test:
     docker:
       - image: circleci/ruby:2.4-node-browsers-legacy
-    environment
     steps:
       - queue/until_front_of_line:
           # job-regex: ^DeployStep[0-9]$
