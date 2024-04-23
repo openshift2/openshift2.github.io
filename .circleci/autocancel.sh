@@ -10,7 +10,7 @@ curl --header "Circle-Token: $PERS_API_TOKEN_BOOST_5" --request GET "https://cir
 WF_NAME=$(jq -r '.name' current_workflow.json)
 CURRENT_PIPELINE_NUM=$(jq -r '.pipeline_number' current_workflow.json)
 CURRENT_PIPELINE_CREATED=$(jq -r '.created_at' current_workflow.json)
-TIME_THRESHOLD=$(date --utc +'%Y-%m-%dT%TZ' -d "${CURRENT_PIPELINE_CREATED} -180 minutes")
+TIME_THRESHOLD=$(date --utc +'%Y-%m-%dT%TZ' -d "${CURRENT_PIPELINE_CREATED} -360 minutes")
 
 ## Get the IDs of pipelines created by the current user on the same branch. (Only consider pipelines that have a pipeline number inferior to the current pipeline)
 PIPE_IDS=$(curl --header "Circle-Token: $PERS_API_TOKEN_BOOST_5" --request GET "https://circleci.com/api/v2/project/gh/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/pipeline?branch=$CIRCLE_BRANCH"|jq -r --argjson CURRENT_PIPELINE_NUM "$CURRENT_PIPELINE_NUM" --arg TIME_THRESHOLD "${TIME_THRESHOLD}" '.items[] | select(.state == "created") | select(.number < $CURRENT_PIPELINE_NUM) | select(.created_at > $TIME_THRESHOLD) | .id')
