@@ -56,3 +56,5 @@ Upgraded the Drone executable itself. New dark mode support! That's the last com
 As requested by Alexander, install the latest "macOS 14 Sonoma" machines. Worked with boostorg/math to retire the oldest "macOS 10.13 High Sierra" that are now offline, and use 14. New drone 23.10 image for Peter. Sent a PR to boostorg/url to centralize the drone 'generate' function at cppalliance/ci-automation.
 
 test
+
+test test4
