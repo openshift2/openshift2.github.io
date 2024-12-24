@@ -33,7 +33,7 @@ plugins:
   - jekyll-email-protect
   - jekyll-seo-tag
   - jekyll-paginate
-  - jekyll-analytics
+  # - jekyll-analytics
 
 feed:
   posts_limit: 15
@@ -57,7 +57,7 @@ title_image: "https://cppalliance.org/images/logo.png"
 #   - vendor/gems/
 #   - vendor/ruby/
 
-jekyll_analytics:
-  Plausible:
-    domain: 'cppalliance.org'
-    source: 'https://plausible.io/js/script.js'
+# jekyll_analytics:
+#   Plausible:
+#     domain: 'cppalliance.org'
+#     source: 'https://plausible.io/js/script.js'
